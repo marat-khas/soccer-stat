@@ -1,0 +1,14 @@
+.appnav {
+  width: 100%;
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__item {
+    font-weight: 400;
+    &.isActive {
+      font-weight: 700;
+    }
+  }
+}
