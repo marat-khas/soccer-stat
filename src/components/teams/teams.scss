@@ -1,28 +1,39 @@
 .teams {
   &__wrapper {
     display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    margin: 0 -15px;
+    @media (min-width: 576px) {
+      margin: -15px;
+    }
+    @media (max-width: 767px) {
+      margin: -7px;
+    }
   }
   &__item {
-    width: 25%;
-    padding: 15px;
+    @media (min-width: 1200px) {
+      width: 25%;
+    }
+    @media (min-width: 768px) and (max-width: 1199px) {
+      width: 33.333%;
+    }
+    @media (max-width: 767px) {
+      width: 50%;
+    }
+    @media (min-width: 576px) {
+      padding: 15px;
+    }
+    @media (max-width: 767px) {
+      padding: 7px;
+    }
   }
 }
 
 .teams-item {
   width: 100%;
-  padding: 20px;
-  background-color: #fff;
+  height: 100%;
   text-align: center;
-  box-shadow: 0 0 10px rgba(30, 30, 30, 0.3);
-  &__name {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1.3;
-    text-align: center;
-    margin-bottom: 20px;
-  }
   &__crest {
     position: relative;
     width: 100%;

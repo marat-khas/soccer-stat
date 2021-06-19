@@ -1,17 +1,33 @@
 import { FC } from 'react';
+import { useLocation } from 'react-router-dom';
+import classNames from 'classnames';
+
+import { ROUTES } from '@constants/routes'
 
 import { AppNavItem } from '@components/app-nav/app-nav-item';
 
-import { ROUTES } from '@constants/routes';
-
 import './app-nav.scss';
 
-export const AppNav: FC = () => (
-  <nav className='appnav'>
-    <div className='container'>
-      <ul className='appnav__list'>
-        <AppNavItem to={ROUTES.COMPETITIONS}>Main page (competitions)</AppNavItem>
-      </ul>
-    </div>
-  </nav>
-)
+import CompetitionsIco from '@assets/img/home.svg'
+
+export const AppNav: FC = () => {
+  const location = useLocation();
+
+  const isHidden = location.pathname === ROUTES.COMPETITIONS;
+
+  const appNavClassNames = classNames('appnav', {
+    isHidden
+  });
+  return (
+    <nav className={appNavClassNames}>
+      <div className='container'>
+        <ul className='appnav__list'>
+          <AppNavItem
+            to={ROUTES.COMPETITIONS}
+            ico={CompetitionsIco}
+            label='Main page (competitions)' />
+        </ul>
+      </div>
+    </nav>
+  )
+}

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getLeagueTeams } from '@services/league'
 import { loading } from '@utilities/loading';
 import { TeamItem } from '@components/teams/team-item';
+import { Filter } from '@components/filter';
 import { TeamsState } from './types'
 import './teams.scss';
 
@@ -30,9 +31,9 @@ export const Teams: FC = () => {
     fetchData();
   }, []);
 
-  const filterHandle: KeyboardEventHandler<HTMLInputElement> = (event) => {
+  const filterHandler: KeyboardEventHandler<HTMLInputElement> = (event) => {
     const { value } = event.target as HTMLInputElement;
-    setFilteredTeams(teams?.filter(team => team.name.includes(value)));
+    setFilteredTeams(teams?.filter(team => team.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())));
   }
 
   return (
@@ -41,10 +42,7 @@ export const Teams: FC = () => {
         <div className='page__title'>
           <h1>Teams of {competition}</h1>
         </div>
-        <div className='filter'>
-          <label htmlFor='team-filter' className='filter__label'>Filter</label>
-          <input type='text' id='team-filter' className='filter__input' onKeyUp={filterHandle} placeholder='Enter team name' />
-        </div>
+        <Filter id='team-filter' keyupHandler={filterHandler} />
         <div className='teams'>
           <div className='teams__wrapper'>
             {

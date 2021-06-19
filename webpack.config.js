@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 
 const DIST = path.resolve(__dirname, 'dist');
 const SRC = path.resolve(__dirname, 'src');
@@ -58,12 +58,16 @@ module.exports = {
         }
       },
       {
-        test: /\.(jpg|png|gif|svg|ico)$/,
+        test: /\.(jpg|png|gif|ico)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'img/[hash][ext][query]'
+          filename: 'img/[hash][ext]'
         }
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      }
     ],
   },
   plugins: [
@@ -76,8 +80,8 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
-        { 
-          from: path.join(SRC, 'assets/favicon'), 
+        {
+          from: path.join(SRC, 'assets/favicon'),
           to: path.join(DIST, 'favicon')
         },
       ],
@@ -86,6 +90,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
+      '@assets': path.join(SRC, 'assets'),
       '@components': path.join(SRC, 'components'),
       '@constants': path.join(SRC, 'constants'),
       '@services': path.join(SRC, 'services'),

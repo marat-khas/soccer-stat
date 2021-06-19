@@ -5,7 +5,14 @@
   background:  $color-main;
   color: #fff;
   &__info {
+    line-height: 1.3;
     text-align: center;
+    @media (min-width: 576px) {
+      font-size: 14px;
+    }
+    @media (max-width: 575px) {
+      font-size: 12px;
+    }
   }
   &__link {
     display: inline-block;

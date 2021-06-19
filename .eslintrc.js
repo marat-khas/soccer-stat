@@ -21,14 +21,16 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'no-shadow': 'off',
+    'quotes': ['error', 'single', 'avoid-escape'],
     'import/prefer-default-export': 'off',
     'import/no-default-export': 'error',
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'react/prop-types': 'off',
     'react/jsx-filename-extension': [1, { 'extensions': ['.tsx', '.ts'] }],
-    'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
     // 'simple-import-sort/imports': ['error',
     //   {

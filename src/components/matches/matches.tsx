@@ -5,6 +5,7 @@ import { getLeagueMatches } from '@services/league';
 import { loading } from '@utilities/loading';
 import { MatchItem } from '@components/matches/match-item';
 import { MatchesState } from './types'
+import './matches.scss';
 
 export const Matches: FC = () => {
   const [matches, setMatches] = useState<MatchesState>(undefined);
@@ -37,12 +38,27 @@ export const Matches: FC = () => {
         <div className='page__title'>
           <h1>Matches{competition && ` of ${competition}`}</h1>
         </div>
-        {matches?.length
-          ? matches?.map((data) => (
-            <MatchItem key={data.id} {...data} />
-          ))
-          : <p>No matches</p>
-        }
+        <table className='table'>
+          <thead>
+            <tr>
+              <th>Date</th>
+              {matches && matches![0].competition && (
+                <th>Competition</th>
+              )}
+              <th>Teams</th>
+              <th>Full-time</th>
+              <th>Half-time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {matches?.length
+              ? matches?.map((data) => (
+                <MatchItem key={data.id} {...data} />
+              ))
+              : <tr><td>No matches</td></tr>
+            }
+          </tbody>
+        </table>
       </div>
     </div>
   )

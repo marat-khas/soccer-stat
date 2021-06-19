@@ -1,0 +1,15 @@
+@import '@styles/vars';
+
+.match-item {
+  &__vs {
+    display: inline-block;
+    margin: 0 1em;
+  }
+  .isWinner {
+    font-weight: 500;
+    color: $color-main;
+  }
+  .isDraw {
+    color: $color-extra;
+  }
+}
