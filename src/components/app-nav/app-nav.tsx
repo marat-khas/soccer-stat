@@ -8,12 +8,10 @@ import './app-nav.scss';
 
 export const AppNav: FC = () => (
   <nav className='appnav'>
-    <ul className='appnav__list'>
-      <AppNavItem to={ROUTES.WELCOME}>Main</AppNavItem>
-      <AppNavItem to={ROUTES.CALENDAR}>Calendar</AppNavItem>
-      <AppNavItem to={ROUTES.COMPETITIONS}>Competitions</AppNavItem>
-      <AppNavItem to={ROUTES.MATCHES}>Matches</AppNavItem>
-      <AppNavItem to={ROUTES.TEAMS}>Teams</AppNavItem>
-    </ul>
+    <div className='container'>
+      <ul className='appnav__list'>
+        <AppNavItem to={ROUTES.COMPETITIONS}>Main page (competitions)</AppNavItem>
+      </ul>
+    </div>
   </nav>
 )

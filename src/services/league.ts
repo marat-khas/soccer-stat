@@ -1,7 +1,7 @@
 import { COMPETITON_URL, TOKEN } from '@constants/services';
-import { Team } from '@components/league/types'
+import { matchesResponse, teamsResponse } from './types';
 
-export const getLeague = (id: string): Promise<Team[]> => (
+export const getLeagueTeams = (id: string): Promise<teamsResponse> => (
   fetch(`${COMPETITON_URL}/${id}/teams`, {
     method: 'GET',
     headers: {
@@ -9,7 +9,19 @@ export const getLeague = (id: string): Promise<Team[]> => (
     }
   })
     .then(response => response.json())
-    .then(data => data.teams)
+    .catch(err => {
+      console.error(err);
+    })
+)
+
+export const getLeagueMatches = (id: string): Promise<matchesResponse> => (
+  fetch(`${COMPETITON_URL}/${id}/matches`, {
+    method: 'GET',
+    headers: {
+      'X-Auth-Token': TOKEN
+    }
+  })
+    .then(response => response.json())
     .catch(err => {
       console.error(err);
     })

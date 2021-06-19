@@ -1,0 +1,21 @@
+@import '@styles/vars.scss';
+
+.footer {
+  padding: 15px 0;
+  background:  $color-main;
+  color: #fff;
+  &__info {
+    text-align: center;
+  }
+  &__link {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
+    transition: color 0.5s, border-color 0.5s;
+    &:hover {
+      color: $color-extra;
+      border-color: $color-extra;
+    }
+  }
+}

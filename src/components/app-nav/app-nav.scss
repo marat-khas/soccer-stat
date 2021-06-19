@@ -1,5 +1,8 @@
 .appnav {
   width: 100%;
+  background-color: #fff;
+  padding: 15px 0;
+  box-shadow: 0 10px 10px rgba(30, 30, 30, 0.3);
   &__list {
     display: flex;
     align-items: center;
@@ -8,7 +11,7 @@
   &__item {
     font-weight: 400;
     &.isActive {
-      font-weight: 700;
+      font-weight: 500;
     }
   }
 }

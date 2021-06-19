@@ -3,5 +3,3 @@ export interface Team {
   name: string,
   crestUrl: string
 }
-
-export type LeagueState = Team[] | undefined

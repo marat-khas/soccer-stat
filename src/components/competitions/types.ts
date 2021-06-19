@@ -1,4 +1,4 @@
-export interface League {
+export interface Competition {
   id: string;
   name: string;
   area: {
@@ -6,4 +6,4 @@ export interface League {
   }
 }
 
-export type CompetitionsState = League[] | undefined;
+export type CompetitionsState = Competition[] | undefined;

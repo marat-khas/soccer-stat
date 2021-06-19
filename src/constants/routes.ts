@@ -1,8 +1,5 @@
 export const ROUTES = {
-  CALENDAR: '/calendar',
-  COMPETITIONS: '/competitions',
+  COMPETITIONS: '/',
   LEAGUE: '/league',
-  MATCHES: '/matches',
-  TEAMS: '/teams',
-  WELCOME: '/',
+  TEAM: '/team'
 }

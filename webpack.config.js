@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 const DIST = path.resolve(__dirname, 'dist');
 const SRC = path.resolve(__dirname, 'src');
@@ -9,12 +10,12 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: DIST,
-    filename: 'bundle[contenthash].js'
+    filename: 'js/bundle[contenthash].js'
   },
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.s[ac]ss$/,
         use: [
           'style-loader',
           'css-loader',
@@ -30,6 +31,21 @@ module.exports = {
         ],
       },
       {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [['autoprefixer']],
+              },
+            },
+          },
+        ],
+      },
+      {
         test: /\.tsx?$/,
         loader: 'ts-loader',
         exclude: /node_modules/,
@@ -37,10 +53,16 @@ module.exports = {
       {
         test: /\.(ttf|woff|woff2|eot)$/,
         type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]'
+        }
       },
       {
         test: /\.(jpg|png|gif|svg|ico)$/,
         type: 'asset/resource',
+        generator: {
+          filename: 'img/[hash][ext][query]'
+        }
       },
     ],
   },
@@ -51,6 +73,14 @@ module.exports = {
     }),
     new CleanWebpackPlugin({
       root: DIST,
+    }),
+    new CopyPlugin({
+      patterns: [
+        { 
+          from: path.join(SRC, 'assets/favicon'), 
+          to: path.join(DIST, 'favicon')
+        },
+      ],
     }),
   ],
   resolve: {

@@ -26,6 +26,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-filename-extension': [1, { 'extensions': ['.tsx', '.ts'] }],
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
@@ -34,7 +35,7 @@ module.exports = {
     //     groups: [
     //       ['^(assert|buffer|child_process|cluster|console|constants|crypto|dgram|dns|domain|events|fs|http|https|module|net|os|path|punycode|querystring|readline|repl|stream|string_decoder|sys|timers|tls|tty|url|util|vm|zlib|freelist|v8|process|async_hooks|http2|perf_hooks)(/.*|$)'],
     //       ['^react', '^@?\\w'],
-    //       ['^(@components|@constants|@components|@state)(/.*|$)'],
+    //       ['^(@components|@constants)(/.*|$)'],
     //       ['^.+\\.ico$', '^.+\\.jpg$', '^.+\\.png$', '^.+\\.svg$'],
     //       ['^.+\\.s?css$'],
     //     ],

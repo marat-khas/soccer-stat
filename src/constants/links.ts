@@ -1,0 +1,1 @@
+export const GITHUB_HREF = 'https://github.com/marat-khas/soccer-stat.git';
