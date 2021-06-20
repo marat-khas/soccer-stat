@@ -14,13 +14,16 @@ export const Match: FC<MatchModel> = ({ utcDate, competition, homeTeam, awayTeam
     isWinner: score.winner === 'HOME_TEAM',
     isDraw: score.winner === 'DRAW'
   })
+
   const awayTeamClassName = classNames({
     isWinner: score.winner === 'AWAY_TEAM',
     isDraw: score.winner === 'DRAW'
   })
+
+  const date = new Date(Date.parse(utcDate));
   return (
     <tr className='match'>
-      <td className='match__date'>{utcDate}</td>
+      <td className='match__date'>{date.toLocaleString()}</td>
       {competition && (
         <td className='match__competition'>
           <Link className='link' to={`${ROUTES.LEAGUE}/${competition.id}/teams`}>{competition.name}</Link>

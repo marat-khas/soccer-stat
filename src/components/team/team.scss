@@ -18,4 +18,9 @@
       transform: translateX(-50%);
     }
   }
+  &__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
