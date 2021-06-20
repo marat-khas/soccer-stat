@@ -3,9 +3,8 @@ import { useParams } from 'react-router-dom';
 import { getTeamMatches } from '@services/team';
 import { getLeagueMatches } from '@services/league';
 import { loading } from '@utilities/loading';
-import { MatchItem } from '@components/matches/match-item';
+import { Match } from '@components/match';
 import { MatchesState } from './types'
-import './matches.scss';
 
 export const Matches: FC = () => {
   const [matches, setMatches] = useState<MatchesState>(undefined);
@@ -20,10 +19,10 @@ export const Matches: FC = () => {
   useEffect(() => {
     loading.start();
     getMatches()
-      .then(({ matches, competition }) => {
-        setMatches(matches);
-        if (competition) {
-          setCompetition(competition.name);
+      .then((data) => {
+        setMatches(data.matches);
+        if (data.competition) {
+          setCompetition(data.competition.name);
         }
         loading.end();
       })
@@ -53,7 +52,7 @@ export const Matches: FC = () => {
           <tbody>
             {matches?.length
               ? matches?.map((data) => (
-                <MatchItem key={data.id} {...data} />
+                <Match key={data.id} {...data} />
               ))
               : <tr><td>No matches</td></tr>
             }

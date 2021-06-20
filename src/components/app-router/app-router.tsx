@@ -4,10 +4,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ROUTES } from '@constants/routes';
 
 import { AppNav } from '@components/app-nav';
-import { Competitions } from '@components/competitions';
 import { Footer } from '@components/footer';
-import { Matches } from '@components/matches';
-import { Teams } from '@components/teams';
+
+import { Competitions } from '@pages/competitions';
+import { Matches } from '@pages/matches';
+import { Teams } from '@pages/teams';
 
 
 export const AppRouter: FC = () => (

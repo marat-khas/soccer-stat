@@ -93,6 +93,7 @@ module.exports = {
       '@assets': path.join(SRC, 'assets'),
       '@components': path.join(SRC, 'components'),
       '@constants': path.join(SRC, 'constants'),
+      '@pages': path.join(SRC, 'pages'),
       '@services': path.join(SRC, 'services'),
       '@styles': path.join(SRC, 'styles'),
       '@utilities': path.join(SRC, 'utilities'),

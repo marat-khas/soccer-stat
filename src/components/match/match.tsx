@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { ROUTES } from '@constants/routes';
 import classNames from 'classnames';
 
-import { Match } from './types';
+import { MatchModel } from './types';
+
+import './match.scss';
 
 const nullToDash = (val: number | null): number | string => val === null ? '-' : val;
 
-export const MatchItem: FC<Match> = ({ utcDate, competition, homeTeam, awayTeam, score }) => {
+export const Match: FC<MatchModel> = ({ utcDate, competition, homeTeam, awayTeam, score }) => {
   const homeTeamClassName = classNames({
     isWinner: score.winner === 'HOME_TEAM',
     isDraw: score.winner === 'DRAW'
@@ -17,21 +19,21 @@ export const MatchItem: FC<Match> = ({ utcDate, competition, homeTeam, awayTeam,
     isDraw: score.winner === 'DRAW'
   })
   return (
-    <tr className='match-item'>
-      <td className='match-item__date'>{utcDate}</td>
+    <tr className='match'>
+      <td className='match__date'>{utcDate}</td>
       {competition && (
-        <td className='match-item__competition'>
+        <td className='match__competition'>
           <Link className='link' to={`${ROUTES.LEAGUE}/${competition.id}/teams`}>{competition.name}</Link>
         </td>
       )
       }
-      <td className='match-item__teams'>
+      <td className='match__teams'>
         <span className={homeTeamClassName}>{homeTeam.name}</span>
-        <span className='match-item__vs'> vs </span>
+        <span className='match__vs'> vs </span>
         <span className={awayTeamClassName}>{awayTeam.name}</span>
       </td>
-      <td className='match-item__scores'>{`${nullToDash(score.fullTime.homeTeam)} : ${nullToDash(score.fullTime.awayTeam)}`}</td>
-      <td className='match-item__scores match-item__scores--halftime'>{`(${nullToDash(score.halfTime.homeTeam)} : ${nullToDash(score.halfTime.awayTeam)})`}</td>
+      <td className='match__scores'>{`${nullToDash(score.fullTime.homeTeam)} : ${nullToDash(score.fullTime.awayTeam)}`}</td>
+      <td className='match__scores match__scores--halftime'>{`(${nullToDash(score.halfTime.homeTeam)} : ${nullToDash(score.halfTime.awayTeam)})`}</td>
     </tr>
   )
 }

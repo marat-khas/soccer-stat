@@ -1,8 +1,8 @@
 import { TEAM_MATCHES_URL, TOKEN } from '@constants/services';
-import { Match } from '@components/matches/match-item/types';
-import { Competition } from '@components/competitions/types';
 
-export const getTeamMatches = (id: string): Promise<{competition: Competition, matches: Match[]}> => (
+import { matchesResponse } from './types';
+
+export const getTeamMatches = (id: string): Promise<matchesResponse> => (
   fetch(TEAM_MATCHES_URL(id), {
     method: 'GET',
     headers: {
@@ -10,7 +10,5 @@ export const getTeamMatches = (id: string): Promise<{competition: Competition, m
     }
   })
     .then(response => response.json())
-    .catch(err => {
-      console.error(err);
-    })
+    .catch(console.error)
 )

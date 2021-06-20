@@ -9,9 +9,7 @@ export const getLeagueTeams = (id: string): Promise<teamsResponse> => (
     }
   })
     .then(response => response.json())
-    .catch(err => {
-      console.error(err);
-    })
+    .catch(console.error)
 )
 
 export const getLeagueMatches = (id: string): Promise<matchesResponse> => (
@@ -22,7 +20,5 @@ export const getLeagueMatches = (id: string): Promise<matchesResponse> => (
     }
   })
     .then(response => response.json())
-    .catch(err => {
-      console.error(err);
-    })
+    .catch(console.error)
 )

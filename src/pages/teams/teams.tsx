@@ -2,7 +2,7 @@ import { FC, KeyboardEventHandler, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getLeagueTeams } from '@services/league'
 import { loading } from '@utilities/loading';
-import { TeamItem } from '@components/teams/team-item';
+import { Team } from '@components/team';
 import { Filter } from '@components/filter';
 import { TeamsState } from './types'
 import './teams.scss';
@@ -48,7 +48,7 @@ export const Teams: FC = () => {
             {
               filteredTeams?.map((data) => (
                 <div className='teams__item' key={data.id}>
-                  <TeamItem {...data} />
+                  <Team {...data} />
                 </div>
               ))
             }

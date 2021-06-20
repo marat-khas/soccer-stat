@@ -1,1 +1,0 @@
-export { CompetitionItem } from './competitions-item';

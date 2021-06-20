@@ -1,13 +1,13 @@
-import { Team } from '@components/teams/team-item/types';
-import { Match } from '@components/matches/match-item/types';
-import { Competition } from '@components/competitions/types';
+import { TeamModel } from '@components/team/types';
+import { MatchModel } from '@components/match/types';
+import { Competition } from '@pages/competitions/types';
 
 export interface teamsResponse {
   competition: Competition;
-  teams: Team[];
+  teams: TeamModel[];
 }
 
 export interface matchesResponse {
   competition?: Competition;
-  matches: Match[];
+  matches: MatchModel[];
 }

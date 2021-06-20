@@ -22,6 +22,7 @@ module.exports = {
   ],
   rules: {
     'no-shadow': 'off',
+    'no-console': 'off',
     'quotes': ['error', 'single', 'avoid-escape'],
     'import/prefer-default-export': 'off',
     'import/no-default-export': 'error',
@@ -32,16 +33,5 @@ module.exports = {
     'react/prop-types': 'off',
     'react/jsx-filename-extension': [1, { 'extensions': ['.tsx', '.ts'] }],
     '@typescript-eslint/no-shadow': ['error'],
-    // 'simple-import-sort/imports': ['error',
-    //   {
-    //     groups: [
-    //       ['^(assert|buffer|child_process|cluster|console|constants|crypto|dgram|dns|domain|events|fs|http|https|module|net|os|path|punycode|querystring|readline|repl|stream|string_decoder|sys|timers|tls|tty|url|util|vm|zlib|freelist|v8|process|async_hooks|http2|perf_hooks)(/.*|$)'],
-    //       ['^react', '^@?\\w'],
-    //       ['^(@components|@constants)(/.*|$)'],
-    //       ['^.+\\.ico$', '^.+\\.jpg$', '^.+\\.png$', '^.+\\.svg$'],
-    //       ['^.+\\.s?css$'],
-    //     ],
-    //   },
-    // ],
   },
 };

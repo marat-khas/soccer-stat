@@ -1,4 +1,4 @@
-export interface CompetitionItemProps {
+export interface CompetitionModel {
   id: string,
   name: string,
   ensignUrl: string

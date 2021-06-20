@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { CompetitionItem } from '@components/competitions/competitions-item'
+import { Competition } from '@components/competition'
 import { getCompetitions } from '@services/competitions';
 import { loading } from '@utilities/loading';
 import { CompetitionsState } from './types'
@@ -39,7 +39,7 @@ export const Competitions: FC = () => {
             ? (
               competitions.map(({ id, name, area }) => (
                 <div className='competitions__item' key={id}>
-                  <CompetitionItem id={id} name={name} ensignUrl={area.ensignUrl} />
+                  <Competition id={id} name={name} ensignUrl={area.ensignUrl} />
                 </div>
               ))
             )
