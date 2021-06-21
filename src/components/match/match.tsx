@@ -36,7 +36,7 @@ export const Match: FC<MatchModel> = ({ utcDate, competition, homeTeam, awayTeam
         <span className={awayTeamClassName}>{awayTeam.name}</span>
       </td>
       <td className='match__scores'>{`${nullToDash(score.fullTime.homeTeam)} : ${nullToDash(score.fullTime.awayTeam)}`}</td>
-      <td className='match__scores match__scores--halftime'>{`(${nullToDash(score.halfTime.homeTeam)} : ${nullToDash(score.halfTime.awayTeam)})`}</td>
+      <td className='match__scores'>{`(${nullToDash(score.halfTime.homeTeam)} : ${nullToDash(score.halfTime.awayTeam)})`}</td>
     </tr>
   )
 }

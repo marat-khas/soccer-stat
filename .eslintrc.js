@@ -23,6 +23,7 @@ module.exports = {
   rules: {
     'no-shadow': 'off',
     'no-console': 'off',
+    'no-param-reassign': 'off',
     'quotes': ['error', 'single', 'avoid-escape'],
     'import/prefer-default-export': 'off',
     'import/no-default-export': 'error',

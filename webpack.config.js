@@ -11,6 +11,7 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: DIST,
+    publicPath: '/',
     filename: 'js/bundle[contenthash].js'
   },
   module: {

@@ -6,7 +6,7 @@
   "homepage": "https://marat-khas.github.io/soccer-stat",
   "scripts": {
     "build": "set NODE_ENV=production && webpack --progress --mode=production",
-    "start": "set NODE_ENV=development && webpack s --config ./webpack.config.js",
+    "start": "set NODE_ENV=development && webpack s --config ./webpack.config.js --mode=development",
     "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },

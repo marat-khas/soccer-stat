@@ -1,9 +1,12 @@
-@import '@styles/vars';
+@import "@styles/vars";
 
 .match {
   &__vs {
     display: inline-block;
     margin: 0 1em;
+  }
+  &__scores {
+    white-space: nowrap;
   }
   .isWinner {
     font-weight: 500;

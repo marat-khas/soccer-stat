@@ -1,10 +1,9 @@
-import { FC, KeyboardEventHandler, useEffect, useState } from 'react';
+import { FC, KeyboardEventHandler, useEffect, useRef, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import qs from 'qs';
 import { getLeagueTeams } from '@services/league'
 import { loading } from '@utilities/loading';
 import { Team } from '@components/team';
-import { Filter } from '@components/filter';
 
 import { TeamsState } from './types'
 
@@ -18,29 +17,32 @@ export const Teams: FC = () => {
 
   const { leagueId } = useParams<{ leagueId: string }>();
 
+  useEffect(() => {
+    loading.start();
+    getLeagueTeams(leagueId)
+      .then((data) => {
+        loading.end();
+        setTeams(data!.teams);
+        setFilteredTeams(data!.teams);
+        setCompetition(data!.competition.name);
+      })
+      .catch(() => {
+        loading.end();
+      });
+  }, []);
+
   const history = useHistory();
   const { filter } = qs.parse(history.location.search.slice(1));
-
-  useEffect(() => {
-    const fetchData = async () => {
-      loading.start();
-      const data = await getLeagueTeams(leagueId)
-        .catch(() => {
-          loading.end();
-        });
-      loading.end();
-      setTeams(data!.teams);
-      setFilteredTeams(data!.teams);
-      setCompetition(data!.competition.name);
-    };
-    fetchData();
-  }, []);
+  const filterRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     if (filter) {
       setFilteredTeams(teams?.filter(
-        team => team.name.toLocaleLowerCase().includes((filter as string).toLocaleLowerCase())
+        team => team.name.toLocaleLowerCase().includes((String(filter)).toLocaleLowerCase())
       ));
+      if (filterRef !== null) {
+        filterRef.current!.value = String(filter);
+      }
     } else {
       setFilteredTeams(teams);
     }
@@ -49,8 +51,8 @@ export const Teams: FC = () => {
   const filterHandler: KeyboardEventHandler<HTMLInputElement> = (event) => {
     const { value } = event.target as HTMLInputElement;
     history.push(value.trim()
-    ? `${history.location.pathname}?filter=${value}`
-    : history.location.pathname)
+      ? `${history.location.pathname}?filter=${value}`
+      : history.location.pathname)
   }
 
   return (
@@ -59,8 +61,13 @@ export const Teams: FC = () => {
         <div className='page__title'>
           <h1>Teams of {competition}</h1>
         </div>
-        <Filter id='team-filter' keyupHandler={filterHandler} />
         <div className='teams'>
+          <div className='teams__filter input'>
+            <label htmlFor='team-filter'>
+              <span>Filter</span>
+              <input type='text' id='team-filter' ref={filterRef} onKeyUp={filterHandler} placeholder='team name' />
+            </label>
+          </div>
           <div className='teams__wrapper'>
             {
               filteredTeams?.map((data) => (

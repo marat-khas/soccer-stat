@@ -3,7 +3,7 @@
         "lib": ["dom", "ESNext"],
         "module": "ESNext",
         "moduleResolution": "Node",
-        "target": "ES5",
+        "target": "ES6",
         "jsx": "react-jsx",
         "importHelpers": true,
         "noUnusedLocals": true,
