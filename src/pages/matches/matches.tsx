@@ -32,7 +32,7 @@ export const Matches: FC = () => {
   }, [])
 
   return (
-    <div className='page matches'>
+    <div className='page'>
       <div className='container'>
         <div className='page__title'>
           <h1>Matches{competition && ` of ${competition}`}</h1>

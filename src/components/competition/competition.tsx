@@ -12,7 +12,9 @@ const placeholder = './src/assets/img/placeholder.jpg';
 export const Competition: FC<CompetitionModel> = ({ id, name, ensignUrl }) => (
   <div className='competition card'>
     <div className='competition__ensign'>
-      <img src={ensignUrl || placeholder} alt='flag' />
+      <div className='competition__img'>
+        <img src={ensignUrl || placeholder} alt='flag' />
+      </div>
     </div>
     <div className='competition__name card__title'>{name}</div>
     <div className='competition__action'>

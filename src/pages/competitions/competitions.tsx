@@ -29,7 +29,7 @@ export const Competitions: FC = () => {
   });
 
   return (
-    <div className='page competitions'>
+    <div className='page'>
       <div className='container'>
         <div className='page__title'>
           <h1>Competitions</h1>

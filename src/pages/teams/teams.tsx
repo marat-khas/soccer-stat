@@ -54,7 +54,7 @@ export const Teams: FC = () => {
   }
 
   return (
-    <div className='page teams'>
+    <div className='page'>
       <div className='container'>
         <div className='page__title'>
           <h1>Teams of {competition}</h1>
