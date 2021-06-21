@@ -34,4 +34,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { 'extensions': ['.tsx', '.ts'] }],
     '@typescript-eslint/no-shadow': ['error'],
   },
+  'globals': {
+    'IS_DEV': true
+  },
 };

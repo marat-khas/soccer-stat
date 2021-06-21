@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { ROUTES } from '@constants/routes';
+import { BASE, ROUTES } from '@constants/routes';
 
 import { AppNav } from '@components/app-nav';
 import { Footer } from '@components/footer';
@@ -12,7 +12,7 @@ import { Teams } from '@pages/teams';
 
 
 export const AppRouter: FC = () => (
-  <BrowserRouter>
+  <BrowserRouter basename={BASE}>
     <div className='app'>
       <header className='app__header'>
         <AppNav />

@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const { DefinePlugin } = require('webpack');
 
 const DIST = path.resolve(__dirname, 'dist');
 const SRC = path.resolve(__dirname, 'src');
@@ -86,6 +87,9 @@ module.exports = {
         },
       ],
     }),
+    new DefinePlugin({
+      'IS_DEV': process.env.NODE_ENV.trim() === 'development',
+    })
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
