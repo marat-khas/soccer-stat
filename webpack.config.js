@@ -6,12 +6,16 @@ const { DefinePlugin } = require('webpack');
 
 const DIST = path.resolve(__dirname, 'dist');
 const SRC = path.resolve(__dirname, 'src');
+const MODE = process.env.NODE_ENV.trim();
+const IS_DEV = MODE === 'development';
+const PUBLIC_PATH = IS_DEV ? '/' : '/soccer-stat/';
+const TEMPLATE = path.join(SRC, IS_DEV ? 'index.dev.html' : 'index.prod.html');
 
 module.exports = {
-  entry: './src/index.tsx',
+  mode: MODE,
+  entry: '/src/index.tsx',
   output: {
     path: DIST,
-    publicPath: '/',
     filename: 'js/bundle[contenthash].js'
   },
   module: {
@@ -75,7 +79,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      template: path.join(SRC, 'index.html'),
+      template: TEMPLATE,
+      publicPath: PUBLIC_PATH
     }),
     new CleanWebpackPlugin({
       root: DIST,
@@ -86,10 +91,14 @@ module.exports = {
           from: path.join(SRC, 'assets/favicon'),
           to: path.join(DIST, 'favicon')
         },
+        {
+          from: path.join(SRC, '404.html'),
+          to: path.join(DIST, '404.html')
+        },
       ],
     }),
     new DefinePlugin({
-      'IS_DEV': process.env.NODE_ENV.trim() === 'development',
+      PUBLIC_PATH: JSON.stringify(PUBLIC_PATH)
     })
   ],
   resolve: {

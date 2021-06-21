@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { BASE, ROUTES } from '@constants/routes';
+import { ROUTES } from '@constants/routes';
 
 import { AppNav } from '@components/app-nav';
 import { Footer } from '@components/footer';
@@ -12,7 +12,7 @@ import { Teams } from '@pages/teams';
 
 
 export const AppRouter: FC = () => (
-  <BrowserRouter basename={BASE}>
+  <BrowserRouter basename={PUBLIC_PATH}>
     <div className='app'>
       <header className='app__header'>
         <AppNav />

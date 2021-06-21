@@ -4,4 +4,4 @@ declare module '*.svg' {
   const content: any;
 }
 
-declare const IS_DEV: boolean;
+declare const PUBLIC_PATH: string;

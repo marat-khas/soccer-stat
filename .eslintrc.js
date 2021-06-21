@@ -36,6 +36,6 @@ module.exports = {
     '@typescript-eslint/no-shadow': ['error'],
   },
   'globals': {
-    'IS_DEV': true
+    'PUBLIC_PATH': '/'
   },
 };
