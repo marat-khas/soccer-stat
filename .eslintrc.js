@@ -24,6 +24,7 @@ module.exports = {
     'no-shadow': 'off',
     'no-console': 'off',
     'no-param-reassign': 'off',
+    'no-nested-ternary': 'off',
     'quotes': ['error', 'single', 'avoid-escape'],
     'import/prefer-default-export': 'off',
     'import/no-default-export': 'error',
@@ -36,6 +37,6 @@ module.exports = {
     '@typescript-eslint/no-shadow': ['error'],
   },
   'globals': {
-    'PUBLIC_PATH': '/'
+    'PUBLIC_PATH': 'readonly'
   },
 };
