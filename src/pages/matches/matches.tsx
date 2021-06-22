@@ -93,9 +93,7 @@ export const Matches: FC = () => {
               <thead>
                 <tr>
                   <th>Date</th>
-                  {matches && matches![0].competition && (
-                    <th>Competition</th>
-                  )}
+                  {matches && matches.length ? matches[0].competition ? <th>Competition</th> : null : null}
                   <th>Teams</th>
                   <th>Full-time</th>
                   <th>Half-time</th>
@@ -106,7 +104,7 @@ export const Matches: FC = () => {
                   ? filteredMatches?.map((data) => (
                     <Match key={data.id} {...data} />
                   ))
-                  : <tr><td>No matches</td></tr>
+                  : <tr><td colSpan={5}>No matches</td></tr>
                 }
               </tbody>
             </table>
