@@ -1,8 +1,8 @@
 import { TEAM_MATCHES_URL, TOKEN } from '@constants/services';
 
-import { matchesResponse } from './types';
+import { MatchesResponse } from './types';
 
-export const getTeamMatches = (id: string): Promise<matchesResponse> => (
+export const getTeamMatches = (id: string): Promise<MatchesResponse> => (
   fetch(TEAM_MATCHES_URL(id), {
     method: 'GET',
     headers: {

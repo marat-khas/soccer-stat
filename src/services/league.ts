@@ -1,7 +1,7 @@
 import { COMPETITON_URL, TOKEN } from '@constants/services';
-import { matchesResponse, teamsResponse } from './types';
+import { MatchesResponse, TeamsResponse } from './types';
 
-export const getLeagueTeams = (id: string): Promise<teamsResponse> => (
+export const getLeagueTeams = (id: string): Promise<TeamsResponse> => (
   fetch(`${COMPETITON_URL}/${id}/teams`, {
     method: 'GET',
     headers: {
@@ -12,7 +12,7 @@ export const getLeagueTeams = (id: string): Promise<teamsResponse> => (
     .catch(console.error)
 )
 
-export const getLeagueMatches = (id: string): Promise<matchesResponse> => (
+export const getLeagueMatches = (id: string): Promise<MatchesResponse> => (
   fetch(`${COMPETITON_URL}/${id}/matches`, {
     method: 'GET',
     headers: {
