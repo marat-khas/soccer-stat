@@ -1,11 +1,20 @@
 import { FC, StrictMode } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-import { AppRouter } from '@components/app-router';
+import { Header } from '@components/header';
+import { Main } from '@components/main';
+import { Footer } from '@components/footer';
 
 import './app.scss';
 
 export const App: FC = () => (
   <StrictMode>
-    <AppRouter />
+    <div className='app'>
+      <BrowserRouter basename={PUBLIC_PATH}>
+        <Header />
+        <Main />
+        <Footer />
+      </BrowserRouter>
+    </div>
   </StrictMode>
 )
